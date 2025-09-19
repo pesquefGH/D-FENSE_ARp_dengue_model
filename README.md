@@ -31,9 +31,18 @@ DFense_ARp: dengue cases prediction based on high-order AR(p) model
 
       |_ plots: stores PDF files, one for each state, with 4 subplots related to predictions of dengue cases: median prediction, 50%, 80%, 90%, and 95% preduction intervals.
 
-  |_ validation3:  material related to validation 2 challenge
+  |_ validation3:  material related to validation 3 challenge
 
       |_ matlab: Matlab scritps needed to run (run_batch_v3_predictor_ARp.m) the simulation and generate the CSV and PDF files, related to dengue case predictions for each state. CSV files are stored in planilhas and related plots (in PDF) are stored in plots  
+
+      |_ planilhas: stores CSV files, one for each state, with predictions of dengue cases
+
+      |_ plots: stores PDF files, one for each state, with 4 subplots related to predictions of dengue cases: median prediction, 50%, 80%, 90%, and 95% preduction intervals.
+
+
+|_ forecast26:  material related to forecast of season 2026 challenge
+
+      |_ matlab: Matlab scritps needed to run (run_batch_forecast26_ARp.m) the simulation and generate the CSV and PDF files, related to dengue case predictions for each state. CSV files are stored in planilhas and related plots (in PDF) are stored in plots  
 
       |_ planilhas: stores CSV files, one for each state, with predictions of dengue cases
 
@@ -57,7 +66,7 @@ https://github.com/americocunhajr/D-FENSE/tree/main/DengueSprint2025_DataAggrega
 
 5) Model Training
 
-DFense_ARp: for each state (UF), the log2 mapping of time-series of raw dengue cases, in the defined range for each validation, have been used to estimate an AR(p), p=92 (experimentaly chosen), via function armcov.m. Initial conditions for the AR(p) model at epidemic week (EW) 25 of 2022/23/24 have been obtained by a simple scheme of inverse filtering of the time-series, followed by direct filtering of the modeling error. The modeling error sequence has been organized in a matrix with 52 columns, each matrix row containing a modeling error sequence related to one year. Assuming a zero-mean Gaussian White distribution for the modeling error ensemble, the standard deviation of a typical model excitation has been estimated. Then, a Monte Carlo simulation with 10000 runs has been carried out, to generate the dengue cases predictions: the AR(p) and initial conditions were fixed, only the model excitation have been drawn from a Gaussian distribution. Each of these model excitations have 79 samples, covering a forecast from EW 26 of a given year to EW 52 of the subsequent year. Then, the attained results have been mapped back to the original amplitude domain (via the inverse of the log2 function). From the set of these 10000 case predictions, the median, lower- and upper-bounds of the 50%, 80%, 0%, 90%, and 95% prediction intervals are calculated. Finally, the resulting curves are smoothed out via an SSA (Singular Spectral Analysis) filter and cropped out to be in the range from EW 41 of a given year to EW 40 of the subsequent year.       
+DFense_ARp: for each state (UF), the log2 mapping of time-series of raw dengue cases, in the defined range for each validation, have been used to estimate an AR(p), p=92 (experimentaly chosen), via function armcov.m. Initial conditions for the AR(p) model at epidemic week (EW) 25 of 2022/23/24/25 have been obtained by a simple scheme of inverse filtering of the time-series, followed by direct filtering of the modeling error. The modeling error sequence has been organized in a matrix with 52 columns, each matrix row containing a modeling error sequence related to one year. Assuming a zero-mean Gaussian White distribution for the modeling error ensemble, the standard deviation of a typical model excitation has been estimated. Then, a Monte Carlo simulation with 10000 runs has been carried out, to generate the dengue cases predictions: the AR(p) and initial conditions were fixed, only the model excitation have been drawn from a Gaussian distribution. Each of these model excitations have 79 samples, covering a forecast from EW 26 of a given year to EW 52 of the subsequent year. Then, the attained results have been mapped back to the original amplitude domain (via the inverse of the log2 function). From the set of these 10000 case predictions, the median, lower- and upper-bounds of the 50%, 80%, 0%, 90%, and 95% prediction intervals are calculated. Finally, the resulting curves are smoothed out via an SSA (Singular Spectral Analysis) filter and cropped out to be in the range from EW 41 of a given year to EW 40 of the subsequent year.       
     
      
 6) References
